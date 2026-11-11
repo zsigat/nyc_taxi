@@ -44,3 +44,17 @@ http://localhost:4040
 > ### API Reference
 >
 > Descriptions and examples: [API Reference](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/spark_session.html)
+
+
+# Fix for possible issues
+
+## Compromised Secrets
+
+### Generating new values
+
+```python
+# FERNET_KEY
+python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"
+# SECRET_KEY and JWT_SECRET (run twice, use different values)
+python -c "import secrets; print(secrets.token_urlsafe(32))"
+```
